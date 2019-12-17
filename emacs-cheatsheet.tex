@@ -1,0 +1,168 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[margin=1cm,landscape]{geometry}
+\usepackage{flowfram}
+\usepackage{lipsum}
+
+\Ncolumn{3}
+\ffvadjustfalse
+\setlength{\columnsep}{1cm}
+\setlength{\parindent}{0cm}
+
+\newcommand{\keyboardshortcut}[2]{#1 \hfill \texttt{#2}}
+
+\begin{document}
+
+\begin{center}{\Huge Emacs Cheatsheet}\end{center}
+
+\section*{General}
+
+\keyboardshortcut{Exit Emacs}{C-x C-c}
+
+\keyboardshortcut{Open a file}{C-x C-f}
+
+\keyboardshortcut{Kill a buffer}{C-x k}
+
+\keyboardshortcut{Switch buffer}{C-x b}
+
+
+\section*{Movement}
+
+\keyboardshortcut{Go to start of line}{C-a}
+
+\keyboardshortcut{Go to end of line}{C-e}
+
+\keyboardshortcut{Move forwards one character}{C-f}
+
+\keyboardshortcut{Move backwards one character}{C-b}
+
+\keyboardshortcut{Move forwards one word}{M-f}
+
+\keyboardshortcut{Move backwards one word}{M-b}
+
+\keyboardshortcut{Move up one line}{C-p}
+
+\keyboardshortcut{Move down one line}{C-n}
+
+\keyboardshortcut{Go to start of file}{M-<}
+
+\keyboardshortcut{Go to end of file}{M->}
+
+\keyboardshortcut{Go to line}{M-g g}
+
+
+\section*{Scrolling}
+
+\keyboardshortcut{Scroll down one screenful}{C-v}
+
+\keyboardshortcut{Scroll up one screenful}{M-v}
+
+\keyboardshortcut{Adjust to current line}{C-l}
+
+
+\section*{Searching}
+
+\keyboardshortcut{Search forwards}{C-s}
+
+\keyboardshortcut{Search backwards}{C-r}
+
+
+\section*{Killing and Yanking}
+
+\keyboardshortcut{\textbf{Delete} next character}{C-d}
+
+\keyboardshortcut{Kill next word}{M-d}
+
+\keyboardshortcut{Kill previous word}{M-DEL}
+
+\keyboardshortcut{Kill to end of line}{C-k}
+
+\keyboardshortcut{Kill to beginning of line}{M-0 C-k}
+
+\keyboardshortcut{Kill selection}{C-w}
+
+\keyboardshortcut{Yank previous kill}{C-y}
+
+
+\section*{Marking}
+
+\keyboardshortcut{Start marking at cursor}{C-SPC}
+
+\keyboardshortcut{Swap cursor and mark start}{C-x C-x}
+
+\keyboardshortcut{Mark function}{C-M-h}
+
+\keyboardshortcut{Mark buffer}{C-x h}
+
+\keyboardshortcut{Mark next 5 words}{M-5 M-@}
+
+\section*{Registers}
+
+\keyboardshortcut{Save cursor position}{C-x r SPC}
+
+\keyboardshortcut{Retrieve cursor position}{C-x r j}
+
+\keyboardshortcut{Save selection}{C-x r s}
+
+\keyboardshortcut{Insert from register}{C-x r i}
+
+\section*{Macros}
+
+\keyboardshortcut{Start recording a macro}{C-x (}
+
+\keyboardshortcut{Stop recording a macro}{C-x )}
+
+\keyboardshortcut{Replay last macro}{C-x e}
+
+
+\vfill\null
+\section*{Rectangles}
+
+Create a rectangle by marking one corner and placing the cursor at the other.
+
+\medskip
+\keyboardshortcut{Kill rectangle}{C-x r k}
+
+\keyboardshortcut{Yank rectangle}{C-x r y}
+
+\keyboardshortcut{Clear rectangle}{C-x r c}
+
+\keyboardshortcut{Prefix rectangle}{C-x r t}
+
+
+\section*{Elisp}
+
+\keyboardshortcut{Eval expression before cursor}{C-x C-e}
+
+\keyboardshortcut{Evaluate buffer}{M-x eval-buffer}
+
+\medskip
+\textbf{Example:} Adding a keybind to save and load cursor position
+from register.
+
+\begin{verbatim}
+;;; ~/.emacs.d/init.el
+(global-set-key
+ (kbd "C-c s")
+ (lambda ()
+   (interactive)
+   (point-to-register 'a)))
+(global-set-key
+ (kbd "C-c f")
+ (lambda ()
+   (interactive)
+   (jump-to-register 'a)))
+\end{verbatim}
+
+
+\section*{Getting Help}
+
+\keyboardshortcut{Open tutorial}{C-h t}
+
+\keyboardshortcut{Show keybind}{C-h k}
+
+\keyboardshortcut{Show Elisp function}{C-h f}
+
+\keyboardshortcut{Show mode help}{C-h m}
+
+\end{document}
